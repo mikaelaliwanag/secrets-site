@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -12,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
-const userSchema = new mongoose.schema ({
+const userSchema = new mongoose.Schema ({
     email: String,
     password: String
 });
@@ -37,7 +38,7 @@ app.get("/register", function(req, res) {
 //////Register route//////
 app.post("/register", function(req, res){
     const newUser = new User({
-        email:req.body.username,
+        email: req.body.username,
         password: req.body.password
     });
 
