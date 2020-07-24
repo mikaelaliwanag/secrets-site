@@ -59,6 +59,11 @@ app.get("/secrets", function(req, res) {
     }
 });
 
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/");
+});
+
 //////Register route//////
 app.post("/register", function(req, res){
 
