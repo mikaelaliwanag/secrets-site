@@ -51,6 +51,14 @@ app.get("/register", function(req, res) {
     res.render("register");
 });
 
+app.get("/secrets", function(req, res) {
+    if (req.isAuthenticated()){
+        res.render("secrets");
+    } else {
+        res.redirect("/login");
+    }
+});
+
 //////Register route//////
 app.post("/register", function(req, res){
 
@@ -60,7 +68,7 @@ app.post("/register", function(req, res){
             res.redirect("/register");
         } else {
             passport.authenticate("local")(req, res, function() {
-                res.redirect.("/secrets");
+                res.redirect("/secrets");
             })
         }
     })
